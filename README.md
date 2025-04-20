@@ -3,10 +3,9 @@
     Sistem ini dibuat dengan menggunakan codeignener 3.
 
 ##  Siapa yang membuat sistem ini?
-    - Bagus Budi Satoto
+    - Rahnia Maulidina
     - Jurusan S1 Informatika 
-    - Falkultas Ilmu Komputer
-    - Universitas Amikom Yogyakarta
+
 
 ## Bagaimana cara menggunakan sistem ini?
 
@@ -63,7 +62,7 @@
 
 | *_Silahkan kirim kritik dan saran anda ke email :_*  |
 |------------------------------------------------------|
-| bagusbudi1308@gmail.com                              |
+| rahniamaulidina1@gmail.com                              |
 
 
 ## Berkontribusi
