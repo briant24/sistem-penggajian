@@ -59,6 +59,7 @@ class Data_Absensi extends CI_Controller {
 						'hadir'			=> $post['hadir'][$key],
 						'sakit'			=> $post['sakit'][$key],
 						'alpha'			=> $post['alpha'][$key],
+						'status_gaji'    => $post['status_gaji'][$key], // Menambahkan status_gaji
 					);
 				}
 			}
@@ -84,7 +85,7 @@ class Data_Absensi extends CI_Controller {
 			$tahun = date('Y');
 			$bulantahun = $bulan.$tahun;
 		}
-		$data['input_absensi'] = $this->db->query("SELECT data_pegawai.*, data_jabatan.nama_jabatan FROM data_pegawai
+		$data['input_absensi'] = $this->db->query("SELECT data_pegawai.*, data_jabatan.nama_jabatan, data_pegawai.status_gaji  FROM data_pegawai
 			INNER JOIN data_jabatan ON data_pegawai.jabatan = data_jabatan.nama_jabatan
 			WHERE NOT EXISTS (SELECT * FROM data_kehadiran WHERE bulan='$bulantahun' AND data_pegawai.nik=data_kehadiran.nik) ORDER BY data_pegawai.nama_pegawai ASC")->result();
 		$this->load->view('template_admin/header', $data);

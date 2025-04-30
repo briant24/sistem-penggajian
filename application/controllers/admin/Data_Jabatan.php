@@ -47,12 +47,16 @@ class Data_Jabatan extends CI_Controller {
 			$gaji_pokok		= $this->input->post('gaji_pokok');
 			$tj_transport	= $this->input->post('tj_transport');
 			$uang_makan		= $this->input->post('uang_makan');
+			$jenis_gaji 	= $this->input->post('jenis_gaji');
+			$tarif_borongan = $this->input->post('tarif_borongan');
 
 			$data = array(
 				'nama_jabatan' 	=> $nama_jabatan,
 				'gaji_pokok' 	=> $gaji_pokok,
 				'tj_transport' 	=> $tj_transport,
 				'uang_makan' 	=> $uang_makan,
+				'jenis_gaji' 	=> $jenis_gaji,
+				'tarif_borongan' => $tarif_borongan,
 			);
 
 			$this->ModelPenggajian->insert_data($data, 'data_jabatan');
@@ -89,12 +93,16 @@ class Data_Jabatan extends CI_Controller {
 			$gaji_pokok		= $this->input->post('gaji_pokok');
 			$tj_transport	= $this->input->post('tj_transport');
 			$uang_makan		= $this->input->post('uang_makan');
+			$jenis_gaji 	= $this->input->post('jenis_gaji');
+			$tarif_borongan = $this->input->post('tarif_borongan');
 
 			$data = array(
 				'nama_jabatan' 	=> $nama_jabatan,
 				'gaji_pokok' 	=> $gaji_pokok,
 				'tj_transport' 	=> $tj_transport,
 				'uang_makan' 	=> $uang_makan,
+				'jenis_gaji' 	=> $jenis_gaji,
+				'tarif_borongan' => $tarif_borongan,
 			);
 
 			$where = array(
@@ -117,6 +125,8 @@ class Data_Jabatan extends CI_Controller {
 		$this->form_validation->set_rules('gaji_pokok','Gaji Pokok','required');
 		$this->form_validation->set_rules('tj_transport','Tunjangan Transport','required');
 		$this->form_validation->set_rules('uang_makan','Uang Makan','required');
+		$this->form_validation->set_rules('jenis_gaji','Jenis Gaji','required');
+		$this->form_validation->set_rules('tarif_borongan','Tarif Borongan','required');
 	}
 
 	public function delete_data($id) {
