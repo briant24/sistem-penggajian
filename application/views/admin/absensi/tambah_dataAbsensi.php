@@ -69,12 +69,11 @@
 			<td class="text-center">No</td>
 			<td class="text-center">NIK</td>
 			<td class="text-center">Nama Pegawai</td>
-			<td class="text-center">Jenis Kelamin</td>
+			<td class="text-center">Jenias Kalamin</td>
 			<td class="text-center">Jabatan</td>
 			<td class="text-center" width="8%">Hadir</td>
 			<td class="text-center" width="8%">Sakit</td>
 			<td class="text-center" width="8%">Alpha</td>
-			<td class="text-center">Status Gaji</td>
 		</tr>
 		<?php $no=1; foreach($input_absensi as $a) :?>
 			<tr>
@@ -90,12 +89,6 @@
 				<td><?php echo $a->nama_pegawai?></td>
 				<td><?php echo $a->jenis_kelamin?></td>
 				<td><?php echo $a->nama_jabatan?></td>
-				<td>
-					<select name="status_gaji[]" class="form-control">
-						<option value="Normal" <?php if($a->status_gaji == 'Normal') echo 'selected'; ?>>Normal</option>
-						<option value="Terlambat" <?php if($a->status_gaji == 'Terlambat') echo 'selected'; ?>>Terlambat</option>
-					</select>
-				</td>
 				<td><input type="number" name="hadir[]" class="form-control" value="0"></td>
 				<td><input type="number" name="sakit[]" class="form-control" value="0"></td>
 				<td><input type="number" name="alpha[]" class="form-control" value="0"></td>

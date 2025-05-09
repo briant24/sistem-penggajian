@@ -37,8 +37,10 @@
               <td class="text-center"><?php echo $p->status ?></td>
               <?php if($p->hak_akses=='1') { ?>
                 <td>Admin</td>
+                <?php } elseif($p->hak_akses=='2') { ?>
+                  <td>Pegawai</td>  
                 <?php } else { ?>
-                  <td>Pegawai</td>
+                  <td>HRD</td>
                 <?php } ?>
               <td><img src="<?php echo base_url().'photo/'.$p->photo?>" width="50px"></td>
               

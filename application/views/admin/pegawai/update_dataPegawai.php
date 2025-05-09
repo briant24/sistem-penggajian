@@ -80,14 +80,22 @@
 				<label>Hak Akses</label>
 				<select name="hak_akses" class="form-control">
 					<option value="<?php echo $p->hak_akses?>">
-						<?php if ($p->hak_akses=='1') {
+					<?php 
+						if ($p->hak_akses == '1') {
 							echo "Admin";
-						} else {
+						} elseif ($p->hak_akses == '2') {
 							echo "Pegawai";
-						} ?>
+						} elseif ($p->hak_akses == '3') {
+							echo "HRD";
+						} else {
+							echo "Tidak Diketahui";
+						}
+						?>
+
 					</option>
 					<option value="1">Admin</option>
 					<option value="2">Pegawai</option>
+					<option value="3">HRD</option>
 				</select>
 			</div>
 

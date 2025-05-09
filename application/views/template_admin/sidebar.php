@@ -46,6 +46,7 @@
             <a class="collapse-item" href="<?php echo base_url('admin/data_absensi') ?>">Data Absensi</a>
             <a class="collapse-item" href="<?php echo base_url('admin/potongan_gaji') ?>">Setting Potongan Gaji</a>
             <a class="collapse-item" href="<?php echo base_url('admin/data_penggajian') ?>">Data Gaji</a>
+            <a class="collapse-item" href="<?php echo base_url('admin/data_penggajian_borongan') ?>">Data Gaji Borongan</a>
           </div>
         </div>
       </li>
