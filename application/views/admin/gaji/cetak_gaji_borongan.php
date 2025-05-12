@@ -27,7 +27,7 @@
 <body>
     <center>
         <h1>KONVEKSI KAMPOENG BUSANA</h1>
-        <h2>Gaji Pegawai Bulanan</h2>
+        <h2>Daftar Gaji Pegawai Borongan</h2>
         <hr>
     </center>
 
@@ -52,6 +52,11 @@
             <td>:</td>
             <td><?php echo isset($tahun) ? $tahun : date('Y')?></td>
         </tr>
+        <tr>
+            <td>Minggu</td>
+            <td>:</td>
+            <td><?php echo isset($minggu) ? $minggu : 1?></td>
+        </tr>
     </table>
 
     <?php if (!empty($cetak_gaji)) { ?>
@@ -62,18 +67,19 @@
                 <th class="text-center">Nama Pegawai</th>
                 <th class="text-center">Jenis Kelamin</th>
                 <th class="text-center">Jabatan</th>
-                <th class="text-center">Gaji Pokok</th>
-                <th class="text-center">Tj. Transport</th>
-                <th class="text-center">Uang Makan</th>
-                <th class="text-center">Potongan</th>
+                <th class="text-center">Target Produksi</th>
+                <th class="text-center">Tarif Borongan</th>
+                <th class="text-center">Potongan (Alpha)</th>
                 <th class="text-center">Total Gaji</th>
             </tr>
             <?php 
             $no = 1;
             $potongan = !empty($potongan) ? $potongan[0]->jml_potongan : 0;
-            foreach ($cetak_gaji as $g) :
-                $potongan_gaji = $g->alpha * $potongan;
-                $total_gaji = $g->gaji_pokok + $g->tj_transport + $g->uang_makan - $potongan_gaji;
+            foreach ($cetak_gaji as $g) : 
+                $target = isset($g->target_mingguan) ? $g->target_mingguan : 0;
+                $tarif = isset($g->tarif_borongan) ? $g->tarif_borongan : 10000; // Default Rp10.000
+                $potongan_gaji = isset($g->alpha) ? $g->alpha * $potongan : 0;
+                $total_gaji = ($target * $tarif) - $potongan_gaji;
             ?>
             <tr>
                 <td><?php echo $no++ ?></td>
@@ -81,9 +87,8 @@
                 <td><?php echo $g->nama_pegawai ?></td>
                 <td><?php echo $g->jenis_kelamin ?></td>
                 <td><?php echo $g->nama_jabatan ?></td>
-                <td>Rp. <?php echo number_format($g->gaji_pokok, 0, ',', '.') ?></td>
-                <td>Rp. <?php echo number_format($g->tj_transport, 0, ',', '.') ?></td>
-                <td>Rp. <?php echo number_format($g->uang_makan, 0, ',', '.') ?></td>
+                <td><?php echo $target ?> unit</td>
+                <td>Rp. <?php echo number_format($tarif, 0, ',', '.') ?></td>
                 <td>Rp. <?php echo number_format($potongan_gaji, 0, ',', '.') ?></td>
                 <td>Rp. <?php echo number_format($total_gaji, 0, ',', '.') ?></td>
             </tr>
@@ -91,7 +96,7 @@
         </table>
     <?php } else { ?>
         <p style="text-align: center; color: red; margin-top: 20px;">
-            Data gaji bulanan untuk bulan <?php echo isset($nama_bulan[$bulan]) ? $nama_bulan[$bulan] : $bulan ?> tahun <?php echo isset($tahun) ? $tahun : date('Y') ?> tidak ditemukan.
+            Data gaji borongan untuk bulan <?php echo isset($nama_bulan[$bulan]) ? $nama_bulan[$bulan] : $bulan ?> tahun <?php echo isset($tahun) ? $tahun : date('Y') ?> minggu <?php echo isset($minggu) ? $minggu : 1 ?> tidak ditemukan.
         </p>
     <?php } ?>
 

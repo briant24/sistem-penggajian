@@ -78,7 +78,7 @@
 		              	<td class="text-center">No</td>
 						<td class="text-center">NIK</td>
 						<td class="text-center">Nama Pegawai</td>
-						<td class="text-center">Jenias Kalamin</td>
+						<td class="text-center">Jenias Kelamin</td>
 						<td class="text-center">Jabatan</td>
 						<td class="text-center">Hadir</td>
 						<td class="text-center">Sakit</td>

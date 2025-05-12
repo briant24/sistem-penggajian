@@ -2,10 +2,10 @@
 <div class="container-fluid">
 	<div class="card mx-auto" style="width: 35%">
 		<div class="card-header bg-primary text-white text-center">
-			Filter Laporan Gaji Pegawai Bulanan
+			Filter Laporan Gaji Pegawai Borongan
 		</div>
 
-		<form method="POST" action="<?php echo base_url('admin/laporan_gaji/cetak_laporan_gaji')?>">
+		<form method="POST" action="<?php echo base_url('admin/laporan_gaji_borongan/cetak_laporan_gaji')?>">
 			<div class="card-body">
 				<div class="form-group row">
 					<label for="bulan" class="col-sm-3 col-form-label">Bulan</label>
@@ -38,6 +38,20 @@
 							for($i = 2020; $i <= $tahun_sekarang + 5; $i++) { ?>
 								<option value="<?php echo $i ?>"><?php echo $i ?></option>
 							<?php } ?>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="minggu" class="col-sm-3 col-form-label">Minggu</label>
+					<div class="col-sm-9">
+						<select class="form-control" name="minggu" id="minggu">
+							<option value="">Pilih Minggu</option>
+							<option value="1">Minggu 1</option>
+							<option value="2">Minggu 2</option>
+							<option value="3">Minggu 3</option>
+							<option value="4">Minggu 4</option>
+							<option value="5">Minggu 5</option>
 						</select>
 					</div>
 				</div>

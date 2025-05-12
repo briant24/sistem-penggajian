@@ -100,7 +100,7 @@
 			</td>
 
 			<td width="200px">
-				<p>Tegal, <?php echo date("d M Y")?> <br> Finance,</p>
+				<p>Bandung, <?php echo date("d M Y")?> <br> Finance,</p>
 				<br>
 				<br>
 				<p>___________________</p>
