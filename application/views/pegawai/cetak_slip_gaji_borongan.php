@@ -106,7 +106,7 @@
 <body>
     <div class="container">
         <h1>KONVEKSI KAMPOENG BUSANA</h1>
-        <h2>Slip Gaji Pegawai Bulanan</h2>
+        <h2>Slip Gaji Pegawai Borongan</h2>
         <hr>
 
         <?php if ($print_slip) : ?>
@@ -132,14 +132,17 @@
                         '05' => 'Mei', '06' => 'Juni', '07' => 'Juli', '08' => 'Agustus',
                         '09' => 'September', '10' => 'Oktober', '11' => 'November', '12' => 'Desember'
                     ];
-                    $bulan = $print_slip->bulan ? substr($print_slip->bulan, 0, 2) : '';
-                    echo isset($nama_bulan[$bulan]) ? $nama_bulan[$bulan] : ($bulan ?: '-');
+                    echo isset($nama_bulan[$print_slip->bulan_target]) ? $nama_bulan[$print_slip->bulan_target] : ($print_slip->bulan_target ?: '-');
                     ?>
                 </td>
             </tr>
             <tr>
                 <td>Tahun</td>
-                <td><?php echo $print_slip->bulan ? substr($print_slip->bulan, 2, 4) : '-' ?></td>
+                <td><?php echo $print_slip->tahun_target ?? '-' ?></td>
+            </tr>
+            <tr>
+                <td>Minggu</td>
+                <td><?php echo $print_slip->mingguke ?? '-' ?></td>
             </tr>
         </table>
 
@@ -149,26 +152,26 @@
                 <th>Potongan</th>
             </tr>
             <tr>
-                <td>Gaji Pokok</td>
-                <td>Rp. <?php echo number_format($print_slip->gaji_pokok ?? 0, 0, ',', '.') ?></td>
-                <td rowspan="3">
+                <td>Target Produksi</td>
+                <td><?php echo $print_slip->target_mingguan ?? 0 ?> unit</td>
+                <td rowspan="2">
                     Potongan (Alpha: <?php echo $print_slip->alpha ?? 0 ?> hari): 
                     <?php $potongan_gaji = ($print_slip->alpha ?? 0) * (!empty($potongan) ? ($potongan[0]->jml_potongan ?? 0) : 0); ?>
                     Rp. <?php echo number_format($potongan_gaji, 0, ',', '.') ?>
                 </td>
             </tr>
             <tr>
-                <td>Tunjangan Transport</td>
-                <td>Rp. <?php echo number_format($print_slip->tj_transport ?? 0, 0, ',', '.') ?></td>
-            </tr>
-            <tr>
-                <td>Uang Makan</td>
-                <td>Rp. <?php echo number_format($print_slip->uang_makan ?? 0, 0, ',', '.') ?></td>
+                <td>Tarif Borongan</td>
+                <td>Rp. <?php echo number_format($print_slip->tarif_borongan ?? 0, 0, ',', '.') ?></td>
             </tr>
             <tr class="total">
                 <td>Total Pendapatan</td>
                 <td colspan="2">
-                    <?php $total_gaji = (($print_slip->gaji_pokok ?? 0) + ($print_slip->tj_transport ?? 0) + ($print_slip->uang_makan ?? 0)) - $potongan_gaji; ?>
+                    <?php 
+                    $target = $print_slip->target_mingguan ?? 0;
+                    $tarif = $print_slip->tarif_borongan ?? 0;
+                    $total_gaji = ($target * $tarif) - $potongan_gaji;
+                    ?>
                     Rp. <?php echo number_format($total_gaji, 0, ',', '.') ?>
                 </td>
             </tr>
