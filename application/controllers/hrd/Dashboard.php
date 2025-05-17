@@ -29,7 +29,7 @@ class Dashboard extends CI_Controller {
 
         $this->load->view('template_hrd/header', $data);
         $this->load->view('template_hrd/sidebar');
-        $this->load->view('hrd/dashboard', $data); // pastikan view ini ada dan sesuai
+        $this->load->view('hrd/dashboard', $data); // pastikan view ini GMNAAAAAAAA
         $this->load->view('template_hrd/footer');
     }
 }
