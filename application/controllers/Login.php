@@ -35,6 +35,8 @@ class Login extends CI_Controller {
 						break;
 					case 2 : redirect('pegawai/dashboard');
 						break;
+					case 3 : redirect('hrd/dashboard_hrd');
+						break;
 					default:
 						break;
 				}
