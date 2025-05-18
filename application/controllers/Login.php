@@ -35,7 +35,7 @@ class Login extends CI_Controller {
 						break;
 					case 2 : redirect('pegawai/dashboard');
 						break;
-					case 3 : redirect('hrd/dashboard_hrd');
+					case 3 : redirect('hrd/dashboard'); //ini manggil controller bukan view, class controllermu dashboard, gaada _hrdnya
 						break;
 					default:
 						break;
